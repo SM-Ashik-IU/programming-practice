@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class  summation{
+public:
+    int sum=0;
+    void calculation();
+    void output();
+};
+void summation::calculation()
+{
+    for(int i=1;i<=100;i++){
+        if(i%2==0){
+            sum=sum+i;
+        }
+    }
+}
+void summation::output()
+{
+    cout<<"The Summation of even number between 1 to 100 is: "<<sum<<endl;
+}
+int main()
+{
+    summation ss;
+    ss.calculation();
+    ss.output();
+    return 0;
+}

@@ -1,0 +1,58 @@
+#include<stdio.h>
+int step =0;
+void merge(int a[],int left,int mid,int right){
+    int i,j,l_size,r_size;
+    l_size=mid-left+1;
+    r_size=right-mid;
+    int LA[l_size],RA[r_size];
+    for(i=0;i<l_size;i++){
+        LA[i]=a[left+i];
+    }
+    for(i=0;i<r_size;i++){
+        RA[i]=a[mid+i+1];
+    }
+    i=0;
+    j=0;
+    while(i<l_size&&j<r_size){
+        if(LA[i]<RA[j]){
+            a[left++]=LA[i];
+            i++;
+        }
+        else{
+            a[left++]=RA[j];
+            j++;
+        }
+    }
+    while(i<l_size){
+        a[left++]=LA[i];
+        i++;
+    }
+    while(j<r_size){
+        a[left++]=RA[j];
+        j++;
+    }
+    step++;
+    printf("After %d step:\n",step);
+    for(i=0;i<8;i++){
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+}
+void merge_sort(int a,int left,int right){
+    if(left>=right) return;
+
+    int mid=left+(right-left)/2;
+    merge_sort(a,left,mid);
+    merge_sort(a,mid+1,right);
+    merge(a,left,mid,right);
+}
+int main()
+{
+    int i,a[8]={66,34,52,71,21,42,61,8};
+    merge_sort(a,0,7);
+    printf("After Merge Sort\n");
+    for(i=0;i<8;i++){
+        printf("%d ",a[i]);
+    }
+    return 0;
+}

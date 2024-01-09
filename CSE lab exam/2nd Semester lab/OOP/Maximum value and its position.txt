@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class maximum{
+public:
+    int i,j,temp,a[1000],n,mx,loc;
+    void input();
+    void calculation();
+    void output();
+
+};
+void maximum::input()
+{
+    cout<<"Enter Total Number: ";
+    cin>>n;
+    cout<<"Enter The numbers:"<<endl;
+
+    for(i=0;i<n;i++){
+        cin>>a[i];
+    }
+}
+
+void maximum::calculation()
+{
+    mx=a[0];
+    loc=0;
+    for(i=1;i<n;i++){
+       if(mx<a[i]){
+        mx=a[i];
+        loc=i+1;
+       }
+    }
+
+}
+void maximum::output()
+{
+    cout<<"Maximum value: "<<mx<<endl;
+    cout<<"Position of maximum value: "<<loc<<endl;
+}
+
+int main()
+{
+    maximum mx;
+    mx.input();
+    mx.calculation();
+    mx.output();
+
+    return 0;
+}

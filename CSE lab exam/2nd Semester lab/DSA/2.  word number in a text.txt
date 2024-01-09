@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<bits/stdc++.h>
+#include<string.h>
+using namespace std;
+int main()
+{
+    string text,prev;
+    cout<<"Insert the text"<<endl;
+    getline(cin,text);
+    cout<<"Insert the word"<<endl;
+    getline(cin,prev);
+    int r=text.size();
+    int s=prev.size();
+    int counter=0,found,match=0;
+    int max=r-s+1;
+
+    for(int i=0;i<max;i++){
+           found=1;
+        for(int j=0;j<s;j++){
+            if(text[i+j]==prev[j]){
+                continue;
+            }
+             else{
+               found=0;
+               break;
+        }
+        }
+
+        if(found==1){
+            counter++;
+            match=1;
+        }
+    }
+    if(match==0) cout<<"Not matching found"<<endl;
+
+    cout<<"Total Occurrences= "<<counter<<endl;
+    return 0;
+}

@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+class factorial{
+public:
+    int number,factorial=1;
+    void input();
+    void calculation();
+    void output();
+
+};
+void factorial::input(){
+    cout<<"Enter The Item To Find Factorial: ";
+    cin>>number;
+}
+void factorial::calculation(){
+    for(int i=1;i<=number;i++){
+        factorial=factorial*i;
+    }
+}
+void factorial::output()
+{
+    cout<<"Factorial of "<<number<<" is: "<<factorial<<endl;
+}
+int main()
+{
+    factorial ff;
+    ff.input();
+    ff.calculation();
+    ff.output();
+    return 0;
+}

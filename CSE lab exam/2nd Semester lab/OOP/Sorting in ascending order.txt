@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class sorting{
+public:
+    int i,j,temp,a[1000],n;
+    void input();
+    void calculation();
+    void output();
+
+};
+void sorting::input()
+{
+    cout<<"Enter Total Number: ";
+    cin>>n;
+    cout<<"Enter The numbers:"<<endl;
+
+    for(i=0;i<n;i++){
+        cin>>a[i];
+    }
+}
+
+void sorting::calculation()
+{
+
+    for(int i=1;i<n;i++){
+
+    for(int j=0;j<n-i;j++){
+        if(a[j]>a[j+1]){
+           temp=a[j];
+           a[j]=a[j+1];
+           a[j+1]=temp;
+        }
+
+     }
+
+ }
+
+}
+void sorting::output()
+{
+    cout<<"After sorting the Numbers: "<<endl;
+    for(i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+    cout<<endl;
+}
+
+int main()
+{
+    sorting st;
+    st.input();
+    st.calculation();
+    st.output();
+
+    return 0;
+}

@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<limits.h>
+
+ struct StackNode{
+ int data;
+ struct StackNode *next;
+ };
+
+ struct StackNode* newnode(int data){
+     struct StackNode* stacknode=(struct StackNode*)malloc(sizeof(struct StackNode));
+     stacknode->data=data;
+     stacknode->next=NULL;
+     return stacknode;
+ }
+ int isempty(struct StackNode *head){
+       return !head;
+ }
+ void push(struct StackNode** head,int data){
+     struct StackNode *stacknode=newnode(data);
+     stacknode->next=*head;
+     *head=stacknode;
+     printf("%d is successfully pushed into stack\n",data);
+ }
+ void pop(struct StackNode** head){
+     if(isempty(head)) return INT_MIN;
+     struct StactNode *temp= *head;
+     *head=(*head)->next;
+     free(temp);
+ }
+ int peek(struct StackNode *head){
+     if(isempty(head)) return INT_MIN;
+     return head->data;
+ }
+
+int main()
+{
+    struct StackNode* head=NULL;
+    push(&head, 10);
+    push(&head, 20);
+    push(&head, 30);
+    push(&head, 40);
+    push(&head, 50);
+    push(&head, 60);
+    printf("Value of top of stack %d\n",peek(head));
+    pop(&head);
+    printf("Value of top of stack %d\n",peek(head));
+
+    if(isempty(head)) printf("Empty Stack\n");
+    else printf("Not Empty Stack\n");
+
+    for(int i=0;i<5;i++){
+        pop(&head);
+    }
+
+    if(isempty(head)) printf("Empty Stack\n");
+    else printf("Not Empty Stack\n");
+
+    return 0;
+}

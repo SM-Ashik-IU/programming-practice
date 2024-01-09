@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class hijibiji{
+public:
+    int i,j,r,c,a[10][10],b[10][10],sum[10][10];
+    void input();
+    void calculation();
+    void output();
+
+};
+void hijibiji::input()
+{
+    cout<<"Enter Rows and Columns of matrixs: "<<endl;
+    cin>>r>>c;
+    cout<<endl;
+
+    cout<<"Enter the elements of 1st matrix:"<<endl<<endl;
+    for(i=0;i<r;i++){
+        for(j=0;j<c;j++){
+            cin>>a[i][j];
+        }
+    }
+    cout<<endl;
+    cout<<"Enter the elements of 2nd matrix:"<<endl<<endl;
+    for(i=0;i<r;i++){
+        for(j=0;j<c;j++){
+            cin>>b[i][j];
+        }
+    }
+    cout<<endl;
+}
+
+void hijibiji::calculation()
+{
+    for(i=0;i<r;i++){
+        for(j=0;j<c;j++){
+           sum[i][j]= a[i][j]+b[i][j];
+        }
+    }
+
+}
+void hijibiji::output()
+{
+    cout<<"After adding two matrix the resulting matrix is:"<<endl<<endl;
+    for(i=0;i<r;i++){
+        for(j=0;j<c;j++){
+            cout<<sum[i][j]<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+
+}
+
+int main()
+{
+    hijibiji ad;
+    ad.input();
+    ad.calculation();
+    ad.output();
+
+    return 0;
+}

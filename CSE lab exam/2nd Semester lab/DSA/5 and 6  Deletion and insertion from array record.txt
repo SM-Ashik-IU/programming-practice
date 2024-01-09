@@ -1,0 +1,76 @@
+#include<stdio.h>
+#include<string.h>
+
+char name[10][20];
+int roll[10],marks[10];
+int i,j,k,N=5;
+void read_record()
+{
+    for(i=0;i<N;i++){
+        printf("Enter record for student %d\n",i+1);
+
+        printf("Enter Roll: ");
+        scanf("%d",&roll[i]);
+        printf("Enter name: ");
+        scanf("%s",&name[i]);
+        printf("Enter Marks: ");
+        scanf("%d",&marks[i]);
+
+    }
+}
+void show_record()
+{
+    printf("SI   ROLL     NAME     MARKS\n");
+    for(i=0;i<N;i++){
+    printf("%3d",i+1);
+    printf("%8d",roll[i]);
+    printf("%8s",name[i]);
+    printf("%8d",marks[i]);
+    printf("\n");
+    }
+}
+void insert_record()
+{
+    printf("Enter position: ");
+    scanf("%d",&k);
+    for(j=N-1;j>=k-1;j--){
+        roll[j+1]=roll[j];
+        marks[j+1]=marks[j];
+        strcpy(name[j+1],name[j]);
+    }
+    printf("Enter Data for %dth position\n",k);
+    printf("Enter Roll: ");
+    scanf("%d",&roll[k-1]);
+    printf("Enter Name: ");
+    scanf("%s",&name[k-1]);
+    printf("Enter Marks: ");
+    scanf("%d",&marks[k-1]);
+    N=N+1;
+}
+void delete_record()
+{
+    printf("Enter Position: ");
+    scanf("%d",&k);
+    for(j=k-1;j<N-1;j++){
+        roll[j]=roll[j+1];
+        marks[j]=marks[j+1];
+        strcpy(name[j],name[j+1]);
+    }
+    N=N-1;
+}
+
+int main()
+{
+    read_record();
+    show_record();
+    printf("After Inserting\n");
+
+    insert_record();
+    show_record();
+    printf("After Deleting\n");
+    delete_record();
+    show_record();
+    
+    return 0;
+
+}

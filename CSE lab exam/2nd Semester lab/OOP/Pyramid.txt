@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+class pyramid{
+public:
+    int n,i,j,l,cnt,a[100][100]={0};
+    void input();
+    void calculation();
+    void output();
+};
+void pyramid::input()
+{
+    cout<<"Enter hight of pyramid:"<<endl;
+    cin>>n;
+    l=(n-1)*4+1;
+}
+void pyramid::calculation()
+{
+    for(i=0;i<n;i++){
+       cnt=i+1;
+       for(j=l/2;j>=0;j-=2){
+        a[i][j]=cnt;
+        cnt--;
+       }
+          cnt=i;
+
+       for(j=(l/2)+2;j<l;j+=2){
+        a[i][j]=cnt;
+        cnt--;
+       }
+    }
+}
+void pyramid::output()
+{
+    for(i=0;i<n;i++){
+        for(j=0;j<l;j++){
+           if(a[i][j]>0){
+            cout<<a[i][j];
+           }
+           else{
+            cout<<" ";
+           }
+        }
+        cout<<endl;
+    }
+}
+int main()
+{
+    pyramid pp;
+    pp.input();
+    pp.calculation();
+    pp.output();
+    return 0;
+}

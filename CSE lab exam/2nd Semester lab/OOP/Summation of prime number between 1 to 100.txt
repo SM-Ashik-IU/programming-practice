@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class  prime_sum{
+public:
+    int sum;
+
+    void calculation();
+    void output();
+
+};
+void prime_sum::output()
+{
+    cout<<"The sum of prime number between 1 to 100 is: "<<sum<<endl;
+}
+
+void prime_sum::calculation()
+{
+
+    for(int i=2;i<=100;i++){
+             int flag=0;
+    for(int j=2;j<=i/2;j++){
+        if(i%j==0){
+          flag=1;
+          break;
+        }
+     }
+    if(flag==0){
+        sum=sum+i;
+    }
+ }
+
+}
+
+int main()
+{
+    prime_sum ps;
+
+    ps.calculation();
+    ps.output();
+
+    return 0;
+}

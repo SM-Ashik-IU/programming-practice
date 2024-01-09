@@ -1,0 +1,48 @@
+#include<stdio.h>
+int size = 10;
+int step=0;
+int partition(int low ,int high,int a[]){
+    int i=low-1,j=low,tmp;
+    while(j<high){
+        if(a[j]<a[high]){
+                i+=1;
+            int tmp=a[j];
+            a[j]=a[i];
+            a[i]=tmp;
+        }
+
+        j++;
+    }
+        i+=1;
+        tmp=a[high];
+        a[high]=a[i];
+        a[i]=tmp;
+    step++;
+    printf("After %d step\n",step);
+
+    for(int k=0;k<size;k++){
+        printf("%d ",a[k]);
+    }
+    printf("\n");
+    return i;
+
+}
+void quick_sort(int l,int h,int a[]){
+    if(l>=h) return;
+    int p=partition(l,h,a);
+    quick_sort(l,p-1,a);
+    quick_sort(p+1,h,a);
+
+}
+int main()
+{
+    int a[10]={10,4,9,6,7,1,2,3,5,8};
+    quick_sort(0,9,a);
+    printf("After Sorting:\n");
+    for(int i=0;i<size;i++){
+            printf("%d ",a[i]);
+    }
+    printf("\n");
+
+}
+

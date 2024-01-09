@@ -1,0 +1,188 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+    int roll;
+    int marks;
+    struct node *next;
+
+};
+struct node *new_node(int roll,int marks){
+    struct node *new_node=(struct node*)malloc(sizeof(struct node));
+
+
+    new_node->roll=roll;
+    new_node->marks=marks;
+    new_node->next=NULL;
+    return new_node;
+};
+struct node *create_list(struct node *head){
+   // struct node* head;
+   int m,r;
+    struct node*current=NULL;
+    for(int i=0;i<5;i++){
+     printf("Enter Information for student %d\n",i+1);
+            printf("Enter Roll: ");
+            scanf("%d",&r);
+            printf("Enter Marks: ");
+            scanf("%d",&m);
+        struct node *temp=new_node(r,m);
+        if(head==NULL){
+            head=temp;
+            current=head;
+
+        }
+        else{
+            while(current->next!=NULL){
+                current=current->next;
+            }
+            current->next=temp;
+        }
+    }
+    return head;
+};
+void show_list(struct node*head){
+    struct node*current=head;
+    printf("Roll    Marks\n");
+    while(current!=NULL){
+        printf("%3d",current->roll);
+        printf("%8d",current->marks);
+        printf("\n");
+        current=current->next;
+    }
+}
+//ISERTION PART
+struct node *prepend_new_record(struct node *head){
+    int r,m;
+    printf("Enter New Record For First Position:\n");
+    printf("Enter Roll: ");
+    scanf("%d",&r);
+    printf("Enter Marks: ");
+    scanf("%d",&m);
+    struct node *temp=new_node(r,m);
+    temp->next=head;
+    head=temp;
+    return head;
+};
+struct node *append_new_record(struct node *head){
+    int r,m;
+    printf("Enter New Record For Last Position:\n");
+    printf("Enter Roll: ");
+    scanf("%d",&r);
+    printf("Enter Marks: ");
+    scanf("%d",&m);
+    struct node *temp=new_node(r,m);
+    struct node *current=head;
+    while(current->next!=NULL){
+        current=current->next;
+    }
+    current->next=temp;
+};
+void insert_new_record_any_position(struct node *head){
+    int k,i=0,r,m;
+    printf("Enter the position of node to be inserted: ");
+    scanf("%d",&k);
+    printf("Enter New record: \n");
+    printf("Enter Roll: ");
+    scanf("%d",&r);
+    printf("Enter Marks: ");
+    scanf("%d",&m);
+
+    struct node* temp=new_node(r,m);
+    struct node *current=head,*ploc;
+    while(i<k-2){
+        current=current->next;
+        i++;
+    }
+    temp->next=current->next;
+    current->next=temp;
+
+}
+//DELETION PART
+struct node *delete_first_record(struct node *head){
+    head=head->next;
+    return head;
+}
+void delete_last_record(struct node *head){
+    struct node *current=head,*ploc=NULL;
+    while(current->next!=NULL){
+        ploc=current;
+        current=current->next;
+    }
+    ploc->next=NULL;
+}
+void delete_record_any_position(struct node *head){
+    printf("Enter position to be deleted: ");
+    int k,i=0;
+    scanf("%d",&k);
+    struct node *current=head;
+    struct node *ploc=NULL;
+    while(i<k-1){
+        ploc=current;
+        current=current->next;
+        i++;
+    }
+    ploc->next=current->next;
+
+}
+void find_record_by_roll(struct node *head){
+    int r;
+    printf("Enter The Roll That You Want To Find: ");
+    scanf("%d",&r);
+    struct node *current=head;
+    while(current!=NULL){
+        if(current->roll==r){
+            printf("Roll: %d\nMarks: %d\n",current->roll,current->marks);
+            return;
+        }
+        current=current->next;
+    }
+    printf("Rcord Not Found\n");
+}
+void count_records(struct node* head){
+     struct node *current=head;
+     int cnt=0;
+     while(current!=NULL){
+        cnt++;
+        current=current->next;
+     }
+     if(cnt==0) printf("Record Is Empty\n");
+     else printf("Total Record: %d\n",cnt);
+}
+int main()
+{
+   struct node *head=NULL;
+   head=create_list(head);
+   show_list(head);
+
+   head=prepend_new_record(head);
+   printf("After Insert new record at the begining\n");
+   show_list(head);
+
+   append_new_record(head);
+   printf("After Insert new record at the last\n");
+   show_list(head);
+
+   insert_new_record_any_position(head);
+   printf("After Insretion:\n");
+   show_list(head);
+
+   head =delete_first_record(head);
+   printf("After Deletion first Record:\n");
+   show_list(head);
+
+   delete_last_record(head);
+   printf("After Deletion Last Record:\n");
+   show_list(head);
+
+
+   delete_record_any_position(head);
+   printf("After Deletion:\n");
+   show_list(head);
+
+   find_record_by_roll(head);
+
+   count_records(head);
+
+   return 0;
+
+}

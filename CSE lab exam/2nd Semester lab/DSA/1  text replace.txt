@@ -1,0 +1,43 @@
+#include<stdio.h>
+#include<bits/stdc++.h>
+#include<string.h>
+using namespace std;
+int main()
+{
+    string text;
+    string NEW;
+    string prev;
+    cout<<"Insert the main text"<<endl;
+    getline(cin,text);
+    cout<<"Inter the text which has to be replaced"<<endl;
+    getline(cin,prev);
+    cout<<"Insert the new text"<<endl;
+    getline(cin,NEW);
+    int r =text.size();
+    int s=prev.size();
+    int max=r-s+1;
+    int match=0,found;
+
+    for(int i=0;i<max;i++){
+            found=1;
+        for(int j=0;j<s;j++){
+            if(prev[j]==text[i+j]){
+                continue;
+            }
+            else{
+            found=0;
+            break;
+            }
+        }
+        if(found==1){
+            text.replace(i,s,NEW);
+            match=1;
+        }
+    }
+    if(match==0){
+        cout<<"No matching find"<<endl;
+    }
+    cout<<"final string:"<<endl;
+    cout<<text<<endl;
+    return 0;
+}

@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class  prime{
+public:
+    int number;
+    void input();
+    void calculation();
+
+};
+void prime::input()
+{
+    cout<<"Enter the number to find is it prime or not: ";
+    cin>>number;
+}
+void prime::calculation()
+{
+    int flag=0;
+    for(int i=2;i<=number/2;i++){
+        if(number%i==0){
+          flag=1;
+          break;
+        }
+    }
+    if(flag==1||number==0||number==1){
+        cout<<"The number is not prime!!"<<endl;
+    }
+    else{
+        cout<<"The number is prime!!"<<endl;
+    }
+}
+
+int main()
+{
+    prime pp;
+    pp.input();
+    pp.calculation();
+
+    return 0;
+}
